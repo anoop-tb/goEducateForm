@@ -1,8 +1,8 @@
 "use client";
 import { useSelector } from "react-redux";
 import CardList from "@/components/CardList/CardList";
-import { Typography } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
+import { Box, Typography } from "@mui/material";
+import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const Home = () => {
@@ -11,20 +11,27 @@ const Home = () => {
   );
 
   return (
-    <>
-      {institutionsContent &&
-      Array.isArray(institutionsContent) &&
-      institutionsContent.length > 0 ? (
-        <CardList
-          institutionsContent={institutionsContent}
-          isLoading={isLoading}
-        />
-      ) : (
-        <Typography variant="h4" gutterBottom textAlign="center" marginTop={20}>
-          click show cards to fetch cards
-        </Typography>
-      )}
-    </>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <Box>
+        {institutionsContent &&
+        Array.isArray(institutionsContent) &&
+        institutionsContent.length > 0 ? (
+          <CardList
+            institutionsContent={institutionsContent}
+            isLoading={isLoading}
+          />
+        ) : (
+          <Typography
+            variant="h4"
+            gutterBottom
+            textAlign="center"
+            marginTop={20}
+          >
+            click show cards to fetch cards
+          </Typography>
+        )}
+      </Box>
+    </LocalizationProvider>
   );
 };
 

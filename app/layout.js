@@ -2,6 +2,7 @@ import NavBar from "@/components/NavBar/NavBar";
 import { ReduxProvider } from "@/redux/provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import SetupDatePicker from "@/mui-core/SetupDatePicker/SetupDatePicker";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,8 +16,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <ReduxProvider>
         <body>
-          <NavBar />
-          {children}
+          <SetupDatePicker>{children}</SetupDatePicker>
         </body>
       </ReduxProvider>
     </html>

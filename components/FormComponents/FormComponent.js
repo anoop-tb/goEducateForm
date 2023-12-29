@@ -19,6 +19,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { DatePicker } from "@mui/x-date-pickers";
 
 const style = {
   position: "absolute",
@@ -40,6 +41,8 @@ const validationSchema = yup.object({
     .string("Enter the area to focus/major")
     .required("area to focus/major is required"),
   gpa: yup.string("Enter the GPA").required("GPA is required"),
+  startDate: yup.date().required("Start Date is required"),
+  startDate: yup.date().required("End Date is required"),
   DegreeAwards: yup
     .string("Enter the Degree/Awards")
     .required("Degree/Awards is required"),
@@ -53,6 +56,8 @@ const FormComponent = () => {
     initialValues: {
       schoolName: "",
       areaToFocus: "",
+      startDate: null,
+      endDate: null,
       gpa: "",
       DegreeAwards: "",
       skillsLearned: "",
@@ -127,6 +132,56 @@ const FormComponent = () => {
                 formik.touched.areaToFocus && formik.errors.areaToFocus
               }
             />
+          </Grid>
+          <Grid item>
+            <Grid container display="flex" spacing={2}>
+              <Grid item sx={6}>
+                <DatePicker
+                  label="Start Date"
+                  value={formik.values.dateOfBirth}
+                  onChange={(date) => formik.setFieldValue("startDate", date)}
+                  onBlur={formik.handleBlur}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      fullWidth
+                      id="startDate"
+                      name="startDate"
+                      error={
+                        formik.touched.startDate &&
+                        Boolean(formik.errors.startDate)
+                      }
+                      helperText={
+                        formik.touched.startDate && formik.errors.startDate
+                      }
+                    />
+                  )}
+                />
+              </Grid>
+
+              <Grid item sx={6}>
+                <DatePicker
+                  label="End Date"
+                  value={formik.values.dateOfBirth}
+                  onChange={(date) => formik.setFieldValue("endDate", date)}
+                  onBlur={formik.handleBlur}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      fullWidth
+                      id="endDate"
+                      name="endDate"
+                      error={
+                        formik.touched.endDate && Boolean(formik.errors.endDate)
+                      }
+                      helperText={
+                        formik.touched.endDate && formik.errors.endDate
+                      }
+                    />
+                  )}
+                />
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12}>
             <TextField
