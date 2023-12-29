@@ -1,4 +1,3 @@
-import NavBar from "@/components/NavBar/NavBar";
 import { ReduxProvider } from "@/redux/provider";
 import { Inter } from "next/font/google";
 import "./globals.css";

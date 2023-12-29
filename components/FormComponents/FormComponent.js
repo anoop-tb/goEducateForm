@@ -100,7 +100,13 @@ const FormComponent = () => {
   return (
     <>
       <form onSubmit={formik.handleSubmit} onReset={handleReset}>
-        <Grid container justifyContent="center" padding={7} spacing={2}>
+        <Grid
+          marginTop={4}
+          container
+          justifyContent="center"
+          padding={7}
+          spacing={2}
+        >
           <Grid item xs={12}>
             <TextField
               fullWidth
@@ -133,8 +139,18 @@ const FormComponent = () => {
               }
             />
           </Grid>
+          <Grid item xs={12}>
+            <Grid container justifyContent="start">
+              <Typography>Time Period</Typography>
+            </Grid>
+          </Grid>
           <Grid item>
-            <Grid container display="flex" spacing={2}>
+            <Grid
+              container
+              display="flex"
+              // justifyContent="space-between"
+              spacing={3}
+            >
               <Grid item sx={6}>
                 <DatePicker
                   label="Start Date"
