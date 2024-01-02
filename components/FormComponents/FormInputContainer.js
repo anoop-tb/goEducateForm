@@ -49,6 +49,8 @@ const FormInputContainer = ({
 
   const handleReset = () => {
     formik.resetForm();
+    formik.setFieldValue("startDate", null);
+    formik.setFieldValue("endDate", null);
     setResetForm(false);
   };
 
@@ -110,7 +112,7 @@ const FormInputContainer = ({
             <Grid item sx={6}>
               <DatePicker
                 label="Start Date"
-                value={formik.values.dateOfBirth}
+                value={formik.values.startDate}
                 onChange={(date) => formik.setFieldValue("startDate", date)}
                 onBlur={formik.handleBlur}
                 renderInput={(params) => (
@@ -134,7 +136,7 @@ const FormInputContainer = ({
             <Grid item sx={6}>
               <DatePicker
                 label="End Date"
-                value={formik.values.dateOfBirth}
+                value={formik.values.endDate}
                 onChange={(date) => formik.setFieldValue("endDate", date)}
                 onBlur={formik.handleBlur}
                 renderInput={(params) => (
@@ -184,9 +186,9 @@ const FormInputContainer = ({
               formik.touched.skillsLearned && formik.errors.skillsLearned
             }
           >
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={10}>React</MenuItem>
+            <MenuItem value={20}>Java</MenuItem>
+            <MenuItem value={30}>Python</MenuItem>
           </TextField>
         </Grid>
         <Grid item xs={12}>
@@ -242,20 +244,20 @@ const FormInputContainer = ({
           >
             <Grid item>
               <Button
-                color="primary"
+                color="error"
                 variant="outlined"
                 type="reset"
                 fullWidth
                 sx={{ maxWidth: "100px" }}
               >
-                cancel
+                Reset
               </Button>
             </Grid>
             <Grid item>
               <Button
                 color="primary"
-                // variant="contained"
                 fullWidth
+                variant="outlined"
                 type="submit"
                 sx={{ maxWidth: "100px" }}
               >
